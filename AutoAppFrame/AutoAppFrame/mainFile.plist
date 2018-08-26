@@ -254,7 +254,35 @@
 @end
 </string>
 	<key>cellViewModelMFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]CellViewModel.m
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &quot;[FileName-WaitForReplaced]CellViewModel.h&quot;
+#import &quot;[ModelName-WaitForReplaced].h&quot;
+
+@interface [FileName-WaitForReplaced]CellViewModel ()
+@property (nonatomic, strong) [ModelName-WaitForReplaced] *[ModelLowName-WaitForReplaced];
+@end
+@implementation ChatCellViewModel
+- (instancetype)initWithModel:([ModelName-WaitForReplaced] *)[ModelLowName-WaitForReplaced] {
+    if (self=[super init]) {
+        
+    }
+    return self;
+}
+
+
+
+- (NSUInteger)cellHeight {
+    
+}
+@end
+</string>
 	<key>cellCoordinaterHeaderFileString</key>
 	<string></string>
 	<key>cellCoordinaterMFileString</key>

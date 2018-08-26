@@ -83,7 +83,7 @@
     
 }
 
-- (void)writeMFile:(NSString*)fileStr headfileName:(NSString*)headerName{
+- (void)writeMFile:(NSString*)fileStr MfileName:(NSString*)headerName{
     
     NSString*  mfileStr = [fileStr stringByReplacingOccurrencesOfString:@"[FileName-WaitForReplaced]"
                                                              withString:self.fileName];
@@ -105,7 +105,7 @@
     [self writeHeadFile:viewControllerHeaderFileString headfileName:viewControllerFileName];
     
     NSString *viewControllerMFileString = self.plistDic[@"viewControllerMFileString"];
-    [self writeMFile:viewControllerMFileString headfileName:viewControllerFileName];
+    [self writeMFile:viewControllerMFileString MfileName:viewControllerFileName];
     
 }
 
@@ -116,7 +116,7 @@
     [self writeHeadFile:contextHeaderFileString headfileName:contextFileName];
     
     NSString *contextMFileString = self.plistDic[@"contextMFileString"];
-    [self writeMFile:contextMFileString headfileName:contextFileName];
+    [self writeMFile:contextMFileString MfileName:contextFileName];
    
     
 }
@@ -131,7 +131,7 @@
     
     tableViewModelMFileString  = [tableViewModelMFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
                                                                          withString:self.modelName];
-   [self writeMFile:tableViewModelMFileString headfileName:tableViewModelFileName];
+   [self writeMFile:tableViewModelMFileString MfileName:tableViewModelFileName];
 }
 
 - (void)createCellViewFile{
@@ -167,7 +167,7 @@
     cellViewMFileString = [cellViewMFileString stringByReplacingOccurrencesOfString:@"[PropertiesList-WaitForReplaced]"
                                                                                    withString:propetiesString];
     
-    [self writeMFile:cellViewMFileString headfileName:cellViewFileName];
+    [self writeMFile:cellViewMFileString MfileName:cellViewFileName];
     
     
 }
@@ -192,6 +192,12 @@
     [self writeHeadFile:cellViewModelHeaderFileString headfileName:cellViewModelFileName];
     
     
+    NSString *cellViewModelMFileString = self.plistDic[@"cellViewModelMFileString"];
+    cellViewModelMFileString  = [cellViewModelMFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
+                                                                                               withString:self.modelName];
+    cellViewModelMFileString  = [cellViewModelMFileString  stringByReplacingOccurrencesOfString:@"[ModelLowName-WaitForReplaced]"
+                                                                                               withString:lowerStr];
+    [self writeMFile:cellViewModelMFileString MfileName:cellViewModelFileName];
 }
 
 
