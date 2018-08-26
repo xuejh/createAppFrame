@@ -234,7 +234,25 @@
 @end
 </string>
 	<key>cellViewModelHeaderFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]CellViewModel.h
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &lt;Foundation/Foundation.h&gt;
+
+@class [ModelName-WaitForReplaced];
+@interface [FileName-WaitForReplaced]CellViewModel : NSObject
+
+[PropertiesList-WaitForReplaced]
+
+- (instancetype)initWithModel:([ModelName-WaitForReplaced] *)[ModelLowName-WaitForReplaced];
+- (NSUInteger)cellHeight;
+@end
+</string>
 	<key>cellViewModelMFileString</key>
 	<string></string>
 	<key>cellCoordinaterHeaderFileString</key>

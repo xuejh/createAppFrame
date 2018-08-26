@@ -54,6 +54,7 @@
     [self createContextFile];
     [self createTableViewModelFile];
     [self createCellViewFile];
+    [self createCellViewModelFile];
 }
 
 
@@ -141,19 +142,7 @@
     NSDictionary * data = [self getCellModelPlist];
     
     
-    // 替换头文件属性
-    NSString *propetiesString = @"";
-    
-    NSArray * keys = [data allKeys];
-    for (int i=0; i<keys.count; i++) {
-        
-        NSString *value = [keys objectAtIndex:i];
-        NSString *type = [data objectForKey:value];
-        
-        NSString *tmpSting = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@;\n", type,value];
-        propetiesString = [propetiesString stringByAppendingString:tmpSting];
-        
-    }
+    NSString *propetiesString = [self convertHeadProperty:data];
     
     cellViewHeaderFileString = [cellViewHeaderFileString stringByReplacingOccurrencesOfString:@"[PropertiesList-WaitForReplaced]"
                                                                                        withString:propetiesString];
@@ -162,6 +151,7 @@
     
     
     NSString *cellViewMFileString = self.plistDic[@"cellViewMFileString"];
+    NSArray * keys = [data allKeys];
     propetiesString = @"";
     for (int i=0; i<keys.count; i++) {
         
@@ -182,6 +172,29 @@
     
 }
 
+- (void)createCellViewModelFile{
+    
+    NSString *cellViewModelHeaderFileString = self.plistDic[@"cellViewModelHeaderFileString"];
+    NSString * cellViewModelFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"CellViewModel"];
+    
+    cellViewModelHeaderFileString  = [cellViewModelHeaderFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
+                                                                                       withString:self.modelName];
+    NSString *lowerStr = [NSString stringWithFormat:@"%@%@",[[self.modelName substringToIndex:1]lowercaseString],[self.modelName substringFromIndex:1]];
+    cellViewModelHeaderFileString  = [cellViewModelHeaderFileString  stringByReplacingOccurrencesOfString:@"[ModelLowName-WaitForReplaced]"
+                                                                                               withString:lowerStr];
+    NSDictionary * data = [self getCellModelPlist];
+    NSString *propetiesString = [self convertHeadProperty:data];
+    
+    cellViewModelHeaderFileString = [cellViewModelHeaderFileString stringByReplacingOccurrencesOfString:@"[PropertiesList-WaitForReplaced]"
+    
+                                                                                             withString:propetiesString];
+    
+    [self writeHeadFile:cellViewModelHeaderFileString headfileName:cellViewModelFileName];
+    
+    
+}
+
+
 - (NSString *)filePathWithFileName:(NSString *)name {
     
     return [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/%@", name]];
@@ -191,5 +204,23 @@
     NSString     *path = [[NSBundle mainBundle] pathForResource:@"cellModel.plist" ofType:nil];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:path];
     return data;
+}
+
+- (NSString*)convertHeadProperty:(NSDictionary*)data{
+    
+    // 替换头文件属性
+    NSString *propetiesString = @"";
+    
+    NSArray * keys = [data allKeys];
+    for (int i=0; i<keys.count; i++) {
+        
+        NSString *value = [keys objectAtIndex:i];
+        NSString *type = [data objectForKey:value];
+        
+        NSString *tmpSting = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@;\n", type,value];
+        propetiesString = [propetiesString stringByAppendingString:tmpSting];
+        
+    }
+    return propetiesString;
 }
 @end
