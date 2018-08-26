@@ -55,6 +55,7 @@
     [self createTableViewModelFile];
     [self createCellViewFile];
     [self createCellViewModelFile];
+    [self createTableViewCoordinatorFile];
 }
 
 
@@ -198,6 +199,21 @@
     cellViewModelMFileString  = [cellViewModelMFileString  stringByReplacingOccurrencesOfString:@"[ModelLowName-WaitForReplaced]"
                                                                                                withString:lowerStr];
     [self writeMFile:cellViewModelMFileString MfileName:cellViewModelFileName];
+}
+
+
+
+- (void)createTableViewCoordinatorFile{
+    
+    NSString *tableViewCoordinaterHeaderFileString = self.plistDic[@"tableViewCoordinaterHeaderFileString"];
+    NSString * tableViewCoordinatorFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"TableViewCoordinator"];
+    [self writeHeadFile:tableViewCoordinaterHeaderFileString headfileName:tableViewCoordinatorFileName];
+    
+    NSString *tableViewCoordinaterMFileString = self.plistDic[@"tableViewCoordinaterMFileString"];
+    
+    tableViewCoordinaterMFileString  = [tableViewCoordinaterMFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
+                                                                                       withString:self.modelName];
+    [self writeMFile:tableViewCoordinaterMFileString MfileName:tableViewCoordinatorFileName];
 }
 
 

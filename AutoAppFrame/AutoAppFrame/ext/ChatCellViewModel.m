@@ -24,5 +24,6 @@
 
 - (NSUInteger)cellHeight {
     
+    return 44;
 }
 @end

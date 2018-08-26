@@ -113,9 +113,141 @@
 }
 @end</string>
 	<key>tableViewCoordinaterHeaderFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]TableViewCoordinator.h
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &lt;Foundation/Foundation.h&gt;
+#import &lt;UIKit/UIKit.h&gt;
+
+@interface [FileName-WaitForReplaced]TableViewCoordinator : NSObject
+
+- (instancetype)initWithTableView:(UITableView *)tableView;
+
+@end
+</string>
 	<key>tableViewCoordinaterMFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]TableViewCoordinator.m
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &quot;[FileName-WaitForReplaced]TableViewCoordinator.h&quot;
+#import &quot;[FileName-WaitForReplaced]TableViewModel.h&quot;
+#import &quot;[FileName-WaitForReplaced]CellViewModel.h&quot;
+#import &quot;[FileName-WaitForReplaced]CellCoordinator.h&quot;
+#import &quot;[FileName-WaitForReplaced]CellView.h&quot;
+#import &quot;UIView+Context.h&quot;
+#import &quot;[FileName-WaitForReplaced]Context.h&quot;
+#import &lt;KVOController/FBKVOController.h&gt;
+
+@interface [FileName-WaitForReplaced]TableViewCoordinator ()&lt;UITableViewDelegate,
+UITableViewDataSource&gt;
+
+@property (nonatomic, weak) UITableView *tableView;
+@property(nonatomic, strong) FBKVOController *kvoController;
+@property(nonatomic, strong) [FileName-WaitForReplaced]TableViewModel *viewModel;
+@property(nonatomic, strong) NSMutableDictionary *coordinatorDic; //用于保存cell协调器，用于和cell一一对应
+@end
+@implementation [FileName-WaitForReplaced]TableViewCoordinator
+- (instancetype)initWithTableView:(UITableView *)tableView {
+    if (self=[super init]) {
+        _tableView = tableView;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        
+        [self bindData];
+        [self fetchData];
+    }
+    
+    return self;
+}
+
+
+
+- (void)bindData {
+    [_kvoController unobserveAll];
+    __weak typeof (self) wearkSelf = self;
+    [self.kvoController observe:self.viewModel keyPath:@&quot;cellViewModelList&quot; options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial block:^(id observer, id object, NSDictionary *change) {
+        
+        [wearkSelf.tableView reloadData];
+    }];
+    
+    
+}
+
+- (void)fetchData {
+    [self.viewModel fetchData];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.viewModel.cellViewModelList count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    [FileName-WaitForReplaced]CellViewModel *cellViewModel = self.viewModel.cellViewModelList[indexPath.row];
+    return [cellViewModel cellHeight];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id cellViewModel = self.viewModel.cellViewModelList[indexPath.row];
+    NSString *identifier = @&quot;[FileName-WaitForReplaced]PlainTextCell&quot;;
+    [FileName-WaitForReplaced]CellView *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[FileName-WaitForReplaced]CellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [FileName-WaitForReplaced]CellCoordinator *cellCoordinator = [self getCoordinatorWithCell:cell];
+    [cellCoordinator bindData:cellViewModel];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSNumber *cellAddress = @((UInt64)cell);
+    [FileName-WaitForReplaced]CellCoordinator *cellCoordinator = [self.coordinatorDic objectForKey:cellAddress];
+    [cellCoordinator didSelectCellView];
+}
+
+- ([FileName-WaitForReplaced]CellCoordinator *)getCoordinatorWithCell:([FileName-WaitForReplaced]CellView *)cell {
+    NSNumber *cellAddress = @((UInt64)cell);
+    [FileName-WaitForReplaced]CellCoordinator *cellCoordinator = [self.coordinatorDic objectForKey:cellAddress];
+    if (!cellCoordinator) {
+        cellCoordinator = [[[FileName-WaitForReplaced]CellCoordinator alloc] initWithCellView:cell];
+        [self.coordinatorDic setObject:cellCoordinator forKey:cellAddress];
+    }
+    return cellCoordinator;
+}
+
+- (FBKVOController *)kvoController {
+    if (!_kvoController) {
+        _kvoController = [[FBKVOController alloc] initWithObserver:self retainObserved:YES];
+    }
+    
+    return _kvoController;
+}
+
+- (NSMutableDictionary *)coordinatorDic {
+    if (!_coordinatorDic) {
+        _coordinatorDic = [NSMutableDictionary dictionary];
+    }
+    return _coordinatorDic;
+}
+
+- ([FileName-WaitForReplaced]TableViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[[FileName-WaitForReplaced]TableViewModel alloc] init];
+    }
+    return _viewModel;
+}
+@end
+</string>
 	<key>tableViewModelHeaderFileString</key>
 	<string>//
 //  [FileName-WaitForReplaced]TableViewModel.h

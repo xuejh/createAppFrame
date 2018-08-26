@@ -15,7 +15,11 @@
 @end
 @implementation ChatTableViewModel
 - (void)fetchData {
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //从数据源(dataSource类)获取数据
+        NSArray<IMSMessage *> *array =  [self fetchDataList];
+        self.cellViewModelList = [self convertToCellViewModels:array];
+    });
     
 }
 
@@ -32,7 +36,16 @@
 }
 
 - (NSArray<IMSMessage *> *)fetchDataList {
+    NSMutableArray *cellVMArray = [NSMutableArray array];
+    for (int i=0; i<100; i++) {
+        IMSMessage *conv = [[IMSMessage alloc] init];
+        conv.messageID = [NSString stringWithFormat:@"message-%u", i];
+        conv.content = [NSString stringWithFormat:@"content-%u", i];
+        
+        [cellVMArray addObject:conv];
+    }
     
+    return cellVMArray;
 }
 
 + (ChatCellViewModel *)createCellViewModel:(IMSMessage *)model {
