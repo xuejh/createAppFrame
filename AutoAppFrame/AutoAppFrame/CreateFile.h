@@ -10,7 +10,8 @@
 
 @interface CreateFile : NSObject
 
-@property (nonatomic,strong)NSString * fileName;
+@property (nonatomic,strong)NSString *fileName;
+@property (nonatomic,strong)NSString *modelName;
 
 - (void)createFile;
 

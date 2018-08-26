@@ -52,6 +52,7 @@
     
     [self createOBjectiveCFile];
     [self createContextFile];
+    [self createTableViewModelFile];
 }
 
 
@@ -114,10 +115,22 @@
     
     NSString *contextMFileString = self.plistDic[@"contextMFileString"];
     [self writeMFile:contextMFileString headfileName:contextFileName];
+   
     
 }
 
-
+- (void)createTableViewModelFile{
+    
+    NSString *tableViewModelHeaderFileString = self.plistDic[@"tableViewModelHeaderFileString"];
+    NSString * tableViewModelFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"TableViewModel"];
+    [self writeHeadFile:tableViewModelHeaderFileString headfileName:tableViewModelFileName];
+    
+    NSString *tableViewModelMFileString = self.plistDic[@"tableViewModelMFileString"];
+    
+    tableViewModelMFileString  = [tableViewModelMFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
+                                                                         withString:self.modelName];
+   [self writeMFile:tableViewModelMFileString headfileName:tableViewModelFileName];
+}
 
 - (NSString *)filePathWithFileName:(NSString *)name {
     

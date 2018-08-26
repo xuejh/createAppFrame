@@ -10,7 +10,9 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic,strong)IBOutlet UITextField *textField;
+@property (nonatomic,strong)IBOutlet UITextField *filetextField;
+
+@property (nonatomic,strong)IBOutlet UITextField *modeltextField;
 
 @end
 

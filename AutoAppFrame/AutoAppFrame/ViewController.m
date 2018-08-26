@@ -39,7 +39,8 @@
 - (void)createBtnClick{
     
     CreateFile * file = [[CreateFile alloc]init];
-    file.fileName = self.textField.text;
+    file.fileName = self.filetextField.text;
+    file.modelName = self.modeltextField.text;
     [file createFile];
     
 }
