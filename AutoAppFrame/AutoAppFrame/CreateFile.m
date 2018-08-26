@@ -56,6 +56,7 @@
     [self createCellViewFile];
     [self createCellViewModelFile];
     [self createTableViewCoordinatorFile];
+    [self createCellCoordinatorFile];
 }
 
 
@@ -216,6 +217,22 @@
     [self writeMFile:tableViewCoordinaterMFileString MfileName:tableViewCoordinatorFileName];
 }
 
+
+- (void)createCellCoordinatorFile{
+    
+    NSString *cellCoordinaterHeaderFileString = self.plistDic[@"cellCoordinaterHeaderFileString"];
+    NSString *cellCoordinaterFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"CellCoordinator"];
+    [self writeHeadFile:cellCoordinaterHeaderFileString headfileName:cellCoordinaterFileName];
+    
+    NSString *cellCoordinaterMFileString = self.plistDic[@"cellCoordinaterMFileString"];
+    
+    cellCoordinaterMFileString  = [cellCoordinaterMFileString  stringByReplacingOccurrencesOfString:@"[ModelName-WaitForReplaced]"
+                                                                                                   withString:self.modelName];
+    [self writeMFile:cellCoordinaterMFileString MfileName:cellCoordinaterFileName];
+    
+    
+    
+}
 
 - (NSString *)filePathWithFileName:(NSString *)name {
     
