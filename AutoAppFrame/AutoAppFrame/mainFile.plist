@@ -52,7 +52,7 @@
 }
 
 - (void)installTableViewModule {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - 50)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     tableView.tableFooterView = [[UIView alloc] init];
     tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -70,9 +70,48 @@
 @end
 </string>
 	<key>contextHeaderFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]Context.h
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &lt;UIKit/UIKit.h&gt;
+#import &quot;UIView+Context.h&quot;
+
+
+
+@interface [FileName-WaitForReplaced]Context : NSObject &lt;UIViewContextProtocol&gt;
+
+
+
+@end
+</string>
 	<key>contextMFileString</key>
-	<string></string>
+	<string>//
+//  [FileName-WaitForReplaced]Context.m
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &quot;[FileName-WaitForReplaced]Context.h&quot;
+
+@interface [FileName-WaitForReplaced]Context ()
+@property(nonatomic, weak) UIViewController *controller;
+@end
+@implementation [FileName-WaitForReplaced]Context
+- (instancetype)initWithViewController:(UIViewController *)controller {
+    if (self=[super init]) {
+        self.controller = controller;
+    }
+    
+    return self;
+}
+@end</string>
 	<key>tableViewCoordinaterHeaderFileString</key>
 	<string></string>
 	<key>tableViewCoordinaterMFileString</key>

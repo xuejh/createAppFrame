@@ -51,6 +51,7 @@
 - (void)createFile {
     
     [self createOBjectiveCFile];
+    [self createContextFile];
 }
 
 
@@ -79,20 +80,44 @@
     
 }
 
+- (void)writeMFile:(NSString*)fileStr headfileName:(NSString*)headerName{
+    
+    NSString*  mfileStr = [fileStr stringByReplacingOccurrencesOfString:@"[FileName-WaitForReplaced]"
+                                                             withString:self.fileName];
+    NSError * error = nil;
+    [mfileStr writeToFile:[self filePathWithFileName:[headerName stringByAppendingString:@".m"]]
+               atomically:YES
+                 encoding:NSUTF8StringEncoding
+                    error:&error];
+    
+    
+}
+
+
 
 - (void)createViewControllerFile{
     
     NSString *viewControllerHeaderFileString = self.plistDic[@"viewControllerHeaderFileString"];
     NSString * viewControllerFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"ViewController"];
-    viewControllerHeaderFileString = [viewControllerHeaderFileString stringByReplacingOccurrencesOfString:@"[FileName-WaitForReplaced]"
-                                                                                       withString:self.fileName];
-    NSError * error = nil;
-    [viewControllerHeaderFileString writeToFile:[self filePathWithFileName:[viewControllerFileName stringByAppendingString:@".h"]]
-                                 atomically:YES
-                                   encoding:NSUTF8StringEncoding
-                                      error:&error];
+    [self writeHeadFile:viewControllerHeaderFileString headfileName:viewControllerFileName];
+    
+    NSString *viewControllerMFileString = self.plistDic[@"viewControllerMFileString"];
+    [self writeMFile:viewControllerMFileString headfileName:viewControllerFileName];
     
 }
+
+- (void)createContextFile{
+    
+    NSString *contextHeaderFileString = self.plistDic[@"contextHeaderFileString"];
+    NSString * contextFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"Context"];
+    [self writeHeadFile:contextHeaderFileString headfileName:contextFileName];
+    
+    NSString *contextMFileString = self.plistDic[@"contextMFileString"];
+    [self writeMFile:contextMFileString headfileName:contextFileName];
+    
+}
+
+
 
 - (NSString *)filePathWithFileName:(NSString *)name {
     
