@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>messageID</key>
-	<string></string>
+	<string>NSString</string>
 	<key>content</key>
-	<string></string>
+	<string>NSString</string>
 </dict>
 </plist>

@@ -18,7 +18,7 @@
 		3F88BE2B2132721200BC1DA2 /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2A2132721100BC1DA2 /* UIColor+ColorChange.m */; };
 		3F88BE2D213272F900BC1DA2 /* mainFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE2C213272F900BC1DA2 /* mainFile.plist */; };
 		3F88BE302132775B00BC1DA2 /* CreateFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2F2132775B00BC1DA2 /* CreateFile.m */; };
-		3F88BE32213290DF00BC1DA2 /* model.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE31213290DF00BC1DA2 /* model.plist */; };
+		3F88BE32213290DF00BC1DA2 /* cellModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE31213290DF00BC1DA2 /* cellModel.plist */; };
 		B18D42C89FDD9F99EE84C6AB /* libPods-AutoAppFrame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1A63307B0F3A3AF2912812 /* libPods-AutoAppFrame.a */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		3F88BE2C213272F900BC1DA2 /* mainFile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mainFile.plist; sourceTree = "<group>"; };
 		3F88BE2E2132775B00BC1DA2 /* CreateFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateFile.h; sourceTree = "<group>"; };
 		3F88BE2F2132775B00BC1DA2 /* CreateFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateFile.m; sourceTree = "<group>"; };
-		3F88BE31213290DF00BC1DA2 /* model.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = model.plist; sourceTree = "<group>"; };
+		3F88BE31213290DF00BC1DA2 /* cellModel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cellModel.plist; sourceTree = "<group>"; };
 		7A1A63307B0F3A3AF2912812 /* libPods-AutoAppFrame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoAppFrame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BBEB19868A2A9927D0B3D4F /* Pods-AutoAppFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoAppFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoAppFrame/Pods-AutoAppFrame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +82,7 @@
 		3F88BE0821326D0E00BC1DA2 /* AutoAppFrame */ = {
 			isa = PBXGroup;
 			children = (
-				3F88BE31213290DF00BC1DA2 /* model.plist */,
+				3F88BE31213290DF00BC1DA2 /* cellModel.plist */,
 				3F88BE2C213272F900BC1DA2 /* mainFile.plist */,
 				3F88BE292132721100BC1DA2 /* UIColor+ColorChange.h */,
 				3F88BE2A2132721100BC1DA2 /* UIColor+ColorChange.m */,
@@ -192,7 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F88BE32213290DF00BC1DA2 /* model.plist in Resources */,
+				3F88BE32213290DF00BC1DA2 /* cellModel.plist in Resources */,
 				3F88BE1621326D0E00BC1DA2 /* LaunchScreen.storyboard in Resources */,
 				3F88BE2D213272F900BC1DA2 /* mainFile.plist in Resources */,
 				3F88BE1321326D0E00BC1DA2 /* Assets.xcassets in Resources */,

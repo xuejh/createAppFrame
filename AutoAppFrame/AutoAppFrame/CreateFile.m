@@ -53,6 +53,7 @@
     [self createOBjectiveCFile];
     [self createContextFile];
     [self createTableViewModelFile];
+    [self createCellViewFile];
 }
 
 
@@ -132,9 +133,63 @@
    [self writeMFile:tableViewModelMFileString headfileName:tableViewModelFileName];
 }
 
+- (void)createCellViewFile{
+    
+    NSString *cellViewHeaderFileString = self.plistDic[@"cellViewHeaderFileString"];
+    NSString * cellViewFileName = [NSString stringWithFormat:@"%@%@",self.fileName,@"CellView"];
+    
+    NSDictionary * data = [self getCellModelPlist];
+    
+    
+    // 替换头文件属性
+    NSString *propetiesString = @"";
+    
+    NSArray * keys = [data allKeys];
+    for (int i=0; i<keys.count; i++) {
+        
+        NSString *value = [keys objectAtIndex:i];
+        NSString *type = [data objectForKey:value];
+        
+        NSString *tmpSting = [NSString stringWithFormat:@"@property (nonatomic, strong) %@ *%@;\n", type,value];
+        propetiesString = [propetiesString stringByAppendingString:tmpSting];
+        
+    }
+    
+    cellViewHeaderFileString = [cellViewHeaderFileString stringByReplacingOccurrencesOfString:@"[PropertiesList-WaitForReplaced]"
+                                                                                       withString:propetiesString];
+
+    [self writeHeadFile:cellViewHeaderFileString headfileName:cellViewFileName];
+    
+    
+    NSString *cellViewMFileString = self.plistDic[@"cellViewMFileString"];
+    propetiesString = @"";
+    for (int i=0; i<keys.count; i++) {
+        
+        NSString *value = [keys objectAtIndex:i];
+        NSString *type = [data objectForKey:value];
+        NSString * bValue = [value capitalizedString];
+        
+        NSString *tmpSting = [NSString stringWithFormat:@"- (void)set%@:(%@ *)%@ {\n    _%@ = %@;\n}\n\n",bValue, type,value,value,value];
+        propetiesString = [propetiesString stringByAppendingString:tmpSting];
+        
+    }
+    
+    cellViewMFileString = [cellViewMFileString stringByReplacingOccurrencesOfString:@"[PropertiesList-WaitForReplaced]"
+                                                                                   withString:propetiesString];
+    
+    [self writeMFile:cellViewMFileString headfileName:cellViewFileName];
+    
+    
+}
+
 - (NSString *)filePathWithFileName:(NSString *)name {
     
     return [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/%@", name]];
 }
 
+- (NSDictionary*)getCellModelPlist{
+    NSString     *path = [[NSBundle mainBundle] pathForResource:@"cellModel.plist" ofType:nil];
+    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:path];
+    return data;
+}
 @end
