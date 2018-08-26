@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "CommonPre.h"
+#import "UIColor+ColorChange.h"
+#import "CreateFile.h"
 
 @interface ViewController ()
 
@@ -17,8 +20,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self createRightItem];
 }
 
+
+- (void)createRightItem{
+    
+    UIButton *createButton       = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    [createButton setTitle:@"生成" forState:UIControlStateNormal];
+    [createButton setTitleColor:COLOR_3 forState:UIControlStateNormal];
+    [createButton setTitleColor:COLOR_6 forState:UIControlStateHighlighted];
+    [createButton addTarget:self action:@selector(createBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:createButton];
+    
+}
+
+- (void)createBtnClick{
+    
+    CreateFile * file = [[CreateFile alloc]init];
+    file.fileName = self.textField.text;
+    [file createFile];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

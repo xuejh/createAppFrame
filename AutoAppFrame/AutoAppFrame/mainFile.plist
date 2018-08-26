@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>viewControllerHeaderFileString</key>
+	<string>//
+//  [FileName-WaitForReplaced]ViewController.h
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &lt;UIKit/UIKit.h&gt;
+
+@interface [FileName-WaitForReplaced]ViewController : UIViewController
+
+@end</string>
+	<key>viewControllerMFileString</key>
+	<string>//
+//  [FileName-WaitForReplaced]ViewController.m
+//  AppFramework
+//
+//  Created by xuejinhui 
+//  Copyright © 2018年 nd. All rights reserved.
+//
+
+#import &quot;[FileName-WaitForReplaced]ViewController.h&quot;
+#import &quot;[FileName-WaitForReplaced]TableViewCoordinator.h&quot;
+#import &quot;UIResponder+Router.h&quot;
+#import &quot;UIView+Context.h&quot;
+#import &quot;[FileName-WaitForReplaced]Context.h&quot;
+
+@interface [FileName-WaitForReplaced]ViewController ()
+@property (nonatomic, strong) [FileName-WaitForReplaced]TableViewCoordinator *tableViewCD;
+@end
+
+@implementation [FileName-WaitForReplaced]ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.context = [[[FileName-WaitForReplaced]Context alloc] initWithViewController:self];
+    
+    // Do any additional setup after loading the view.
+    [self installSubModule];
+    
+    
+}
+
+- (void)installSubModule {
+    [self installTableViewModule];
+}
+
+- (void)installTableViewModule {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - 50)];
+    tableView.tableFooterView = [[UIView alloc] init];
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:tableView];
+    
+    self.tableViewCD = [[[FileName-WaitForReplaced]TableViewCoordinator alloc] initWithTableView:tableView];
+}
+
+
+
+- (void)routeEvent:(NSString *)eventName userInfo:(NSDictionary *)userInfo {
+    //拦截事件
+    
+}
+@end
+</string>
+	<key>contextHeaderFileString</key>
+	<string></string>
+	<key>contextMFileString</key>
+	<string></string>
+	<key>tableViewCoordinaterHeaderFileString</key>
+	<string></string>
+	<key>tableViewCoordinaterMFileString</key>
+	<string></string>
+	<key>tableViewModelHeaderFileString</key>
+	<string></string>
+	<key>tableViewModelMFileString</key>
+	<string></string>
+	<key>cellViewHeaderFileString</key>
+	<string></string>
+	<key>cellViewMFileString</key>
+	<string></string>
+	<key>cellViewModelHeaderFileString</key>
+	<string></string>
+	<key>cellViewModelMFileString</key>
+	<string></string>
+	<key>cellCoordinaterHeaderFileString</key>
+	<string></string>
+	<key>cellCoordinaterMFileString</key>
+	<string></string>
+</dict>
+</plist>

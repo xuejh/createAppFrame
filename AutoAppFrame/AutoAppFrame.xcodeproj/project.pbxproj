@@ -13,6 +13,11 @@
 		3F88BE1321326D0E00BC1DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE1221326D0E00BC1DA2 /* Assets.xcassets */; };
 		3F88BE1621326D0E00BC1DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE1421326D0E00BC1DA2 /* LaunchScreen.storyboard */; };
 		3F88BE1921326D0E00BC1DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE1821326D0E00BC1DA2 /* main.m */; };
+		3F88BE2421326F9700BC1DA2 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2121326F9700BC1DA2 /* UIResponder+Router.m */; };
+		3F88BE2521326F9700BC1DA2 /* UIView+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2321326F9700BC1DA2 /* UIView+Context.m */; };
+		3F88BE2B2132721200BC1DA2 /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2A2132721100BC1DA2 /* UIColor+ColorChange.m */; };
+		3F88BE2D213272F900BC1DA2 /* mainFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F88BE2C213272F900BC1DA2 /* mainFile.plist */; };
+		3F88BE302132775B00BC1DA2 /* CreateFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88BE2F2132775B00BC1DA2 /* CreateFile.m */; };
 		B18D42C89FDD9F99EE84C6AB /* libPods-AutoAppFrame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1A63307B0F3A3AF2912812 /* libPods-AutoAppFrame.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +33,16 @@
 		3F88BE1521326D0E00BC1DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F88BE1721326D0E00BC1DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F88BE1821326D0E00BC1DA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F88BE2021326F9700BC1DA2 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
+		3F88BE2121326F9700BC1DA2 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
+		3F88BE2221326F9700BC1DA2 /* UIView+Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Context.h"; sourceTree = "<group>"; };
+		3F88BE2321326F9700BC1DA2 /* UIView+Context.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Context.m"; sourceTree = "<group>"; };
+		3F88BE26213271BB00BC1DA2 /* CommonPre.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonPre.h; sourceTree = "<group>"; };
+		3F88BE292132721100BC1DA2 /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
+		3F88BE2A2132721100BC1DA2 /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
+		3F88BE2C213272F900BC1DA2 /* mainFile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mainFile.plist; sourceTree = "<group>"; };
+		3F88BE2E2132775B00BC1DA2 /* CreateFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateFile.h; sourceTree = "<group>"; };
+		3F88BE2F2132775B00BC1DA2 /* CreateFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateFile.m; sourceTree = "<group>"; };
 		7A1A63307B0F3A3AF2912812 /* libPods-AutoAppFrame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoAppFrame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BBEB19868A2A9927D0B3D4F /* Pods-AutoAppFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoAppFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoAppFrame/Pods-AutoAppFrame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +80,10 @@
 		3F88BE0821326D0E00BC1DA2 /* AutoAppFrame */ = {
 			isa = PBXGroup;
 			children = (
+				3F88BE2C213272F900BC1DA2 /* mainFile.plist */,
+				3F88BE292132721100BC1DA2 /* UIColor+ColorChange.h */,
+				3F88BE2A2132721100BC1DA2 /* UIColor+ColorChange.m */,
+				3F88BE1F21326F9700BC1DA2 /* MUIKit */,
 				3F88BE0921326D0E00BC1DA2 /* AppDelegate.h */,
 				3F88BE0A21326D0E00BC1DA2 /* AppDelegate.m */,
 				3F88BE0C21326D0E00BC1DA2 /* ViewController.h */,
@@ -74,8 +93,22 @@
 				3F88BE1421326D0E00BC1DA2 /* LaunchScreen.storyboard */,
 				3F88BE1721326D0E00BC1DA2 /* Info.plist */,
 				3F88BE1821326D0E00BC1DA2 /* main.m */,
+				3F88BE26213271BB00BC1DA2 /* CommonPre.h */,
+				3F88BE2E2132775B00BC1DA2 /* CreateFile.h */,
+				3F88BE2F2132775B00BC1DA2 /* CreateFile.m */,
 			);
 			path = AutoAppFrame;
+			sourceTree = "<group>";
+		};
+		3F88BE1F21326F9700BC1DA2 /* MUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3F88BE2021326F9700BC1DA2 /* UIResponder+Router.h */,
+				3F88BE2121326F9700BC1DA2 /* UIResponder+Router.m */,
+				3F88BE2221326F9700BC1DA2 /* UIView+Context.h */,
+				3F88BE2321326F9700BC1DA2 /* UIView+Context.m */,
+			);
+			path = MUIKit;
 			sourceTree = "<group>";
 		};
 		5456C5384D95C25FC0050CE4 /* Pods */ = {
@@ -157,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F88BE1621326D0E00BC1DA2 /* LaunchScreen.storyboard in Resources */,
+				3F88BE2D213272F900BC1DA2 /* mainFile.plist in Resources */,
 				3F88BE1321326D0E00BC1DA2 /* Assets.xcassets in Resources */,
 				3F88BE1121326D0E00BC1DA2 /* Main.storyboard in Resources */,
 			);
@@ -222,7 +256,11 @@
 			files = (
 				3F88BE0E21326D0E00BC1DA2 /* ViewController.m in Sources */,
 				3F88BE1921326D0E00BC1DA2 /* main.m in Sources */,
+				3F88BE2521326F9700BC1DA2 /* UIView+Context.m in Sources */,
+				3F88BE302132775B00BC1DA2 /* CreateFile.m in Sources */,
+				3F88BE2B2132721200BC1DA2 /* UIColor+ColorChange.m in Sources */,
 				3F88BE0B21326D0E00BC1DA2 /* AppDelegate.m in Sources */,
+				3F88BE2421326F9700BC1DA2 /* UIResponder+Router.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
