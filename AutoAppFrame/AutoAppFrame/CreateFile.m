@@ -159,7 +159,7 @@
         
         NSString *value = [keys objectAtIndex:i];
         NSString *type = [data objectForKey:value];
-        NSString * bValue = [value capitalizedString];
+        NSString * bValue = [NSString stringWithFormat:@"%@%@",[[value substringToIndex:1]uppercaseString],[value substringFromIndex:1]];
         
         NSString *tmpSting = [NSString stringWithFormat:@"- (void)set%@:(%@ *)%@ {\n    _%@ = %@;\n}\n\n",bValue, type,value,value,value];
         propetiesString = [propetiesString stringByAppendingString:tmpSting];
