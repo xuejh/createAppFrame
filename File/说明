@@ -1,2 +1,3 @@
 1.文件plist生成，属性写在plist里，通过UI显示
 2.initWithMessage 改为initWithModel
+把这个框架和生成model的合在一起不是完美了。
